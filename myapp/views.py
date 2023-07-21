@@ -1,16 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse  
-from myapp.functions import handle_uploaded_file  #functions.py
-from myapp.forms import StudentForm #forms.py
-   
+from django.http import HttpResponse
+from myapp.functions import handle_uploaded_file
+from myapp.forms import StudentForm
+from myapp.models import Student   # Update the import statement
+
 def index(request):  
     if request.method == 'POST':  
-        student = StudentForm(request.POST, request.FILES)  
-        if student.is_valid():  
-            handle_uploaded_file(request.FILES['file'])  
-            model_instance = student.save(commit=False)
-            model_instance.save()
-            return HttpResponse("File uploaded successfuly")  
+        form = StudentForm(request.POST, request.FILES)  
+        if form.is_valid():  
+            form.save()
+            return HttpResponse("File uploaded successfully")  
     else:  
-        student = StudentForm()  
-        return render(request,"index.html",{'form':student}) 
+        form = StudentForm() 
+    return render(request, "index.html", {'form': form})
+
+def dashboard(request):
+    students = Student.objects.all() 
+    return render(request, "dashboard.html", {'students': students})
