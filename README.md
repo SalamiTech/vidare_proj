@@ -15,11 +15,9 @@ This is a simple Django project that allows users to upload files with various t
 
 ## Installation
 1. Clone the repository to your local machine.
-2. Install the required Python packages using `pip install -r requirements.txt`.
-3. Configure your MySQL database settings in the `settings.py` file.
-4. Run migrations using `python manage.py makemigrations` and `python manage.py migrate`.
-5. Create a superuser to access the admin panel with `python manage.py createsuperuser`.
-6. Start the development server with `python manage.py runserver`.
+2. Configure your MySQL database settings in the `settings.py` file.
+3. Run migrations using `python manage.py makemigrations` and `python manage.py migrate`.
+4. Start the development server with `python manage.py runserver`.
 
 ## Usage
 1. Access the application in your web browser at `http://localhost:8000/`.
